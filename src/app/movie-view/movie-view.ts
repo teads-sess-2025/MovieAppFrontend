@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Input, input, OnInit, signal } from '@angular/core';
 import { Movie } from '../types/movie';
+import { MatDialog } from '@angular/material/dialog';
+import { PlaylistDialogComponent } from '../playlist-dialog/playlist-dialog';
+
 
 @Component({
   selector: 'app-movie-view',
@@ -28,4 +31,22 @@ export class MovieView implements OnInit {
         error: (err) => console.error('Failed to load movie', err)
       });
   }
+
+dialog = inject(MatDialog);  // inject MatDialog
+
+saveMovieToPlaylist() {
+  const dialogRef = this.dialog.open(PlaylistDialogComponent);
+
+  dialogRef.afterClosed().subscribe((playlistId: number | null) => {
+    if (playlistId) {
+      this.http.post(`http://localhost:8080/api/movies/save/${this.id}?i=${playlistId}`, null)
+        .subscribe({
+          next: () => alert('Movie added to playlist!'),
+          error: (err) => alert('Failed to add movie.')
+        });
+    }
+  });
+}
+
+
 }

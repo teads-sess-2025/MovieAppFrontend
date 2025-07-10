@@ -1,0 +1,14 @@
+<main>
+    <div>
+        <h1>This is the playlist view</h1>
+        <ul>
+            @for(p of playlists(); track p.id){
+                <li>{{p.id}}
+                   <span>
+                    {{p.name}}
+                   </span>
+                </li>
+            }
+        </ul>
+    </div>
+</main>

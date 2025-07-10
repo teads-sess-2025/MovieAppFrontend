@@ -1,0 +1,10 @@
+<h2>Select a Playlist</h2>
+<ul>
+    @for(p of playlists; track p.id){
+  <li>
+    <button (click)="selectPlaylist(p.id)">{{ p.name }}</button>
+  </li>
+    }
+</ul>
+<button (click)="cancel()">Cancel</button>
+
