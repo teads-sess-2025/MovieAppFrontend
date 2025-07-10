@@ -1,0 +1,13 @@
+<main>
+    <h1>Browse Movies</h1>
+<ul class="movies-grid">
+  @for(movie of movies(); track movie.id) {
+  <li class="movie-card">
+    <a href="/movie/{{movie.id}}">
+    <img src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}" alt={{movie.title}}/>
+    <h2 class="movie-title">{{movie.title}}</h2>
+    </a>
+  </li>
+  }
+</ul>
+</main>

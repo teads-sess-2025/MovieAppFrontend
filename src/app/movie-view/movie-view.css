@@ -1,0 +1,85 @@
+.about-movie-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  background-color: #1a1a1a; /* dark surface */
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  color: #eee;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.poster-section {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.movie-poster {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(255, 77, 77, 0.5); /* red accent shadow */
+  object-fit: cover;
+}
+
+.details-section {
+  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.movie-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ff4d4d; /* red accent */
+}
+
+.movie-overview {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin: 0;
+}
+
+.movie-info {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 1rem;
+  color: #bbb;
+}
+
+.movie-info > div {
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .about-movie-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .poster-section,
+  .details-section {
+    flex: unset;
+  }
+
+  .movie-poster {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.logo {
+  width: 55px;
+  aspect-ratio: 1/1;
+  background: white;
+}
