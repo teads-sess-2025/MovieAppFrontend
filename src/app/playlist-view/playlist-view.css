@@ -1,7 +1,138 @@
 main {
   min-height: 100vh;
+}
+
+.playlist-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  font-family: system-ui, sans-serif;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.playlists-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.playlist-card {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.playlist-card:hover {
+  transform: translateY(-5px);
+}
+
+.playlist-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.playlist-description {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.playlist-footer {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.view-link {
+  color: var(--color-red-400);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.view-link:hover {
+  text-decoration: underline;
+}
+
+.create-button {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-red-400);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.create-button:hover {
+  background-color: var(--color-red-500);
+}
+
+.dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.dialog {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 300px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.dialog input,
+.dialog textarea {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.dialog-buttons button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dialog-buttons button:first-child {
+  background-color: var(--color-red-400);
+  color: #fff;
+}
+
+.dialog-buttons button:last-child {
+  background-color: #555;
+  color: #fff;
 }

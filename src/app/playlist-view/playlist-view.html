@@ -1,14 +1,39 @@
-<main>
-    <div>
-        <h1>This is the playlist view</h1>
-        <ul>
-            @for(p of playlists(); track p.id){
-                <li>{{p.id}}
-                   <span>
-                    {{p.name}}
-                   </span>
-                </li>
-            }
-        </ul>
+<main class="playlist-container">
+  <h1 class="heading">Your playlists</h1>
+
+  <button class="create-button" (click)="openDialog()">+ new playlist</button>
+
+  <section class="playlists-grid">
+    @for (playlist of playlists(); track playlist.id) {
+    <div class="playlist-card">
+      <h2 class="playlist-title">{{ playlist.name }}</h2>
+      <p class="playlist-description">{{ playlist.description }}</p>
+      <div class="playlist-footer">
+        <a class="view-link" href="/playlists/{{ playlist.id }}"
+          >view movies →</a
+        >
+      </div>
     </div>
+    }
+  </section>
+
+  <!-- Dialog -->
+  <div class="dialog-backdrop" *ngIf="showDialog()">
+    <div class="dialog">
+      <h2>Create New Playlist</h2>
+      <input
+        type="text"
+        placeholder="Playlist name"
+        [(ngModel)]="newPlaylist.name"
+      />
+      <textarea
+        placeholder="Description"
+        [(ngModel)]="newPlaylist.description"
+      ></textarea>
+      <div class="dialog-buttons">
+        <button (click)="createPlaylist()">Create</button>
+        <button (click)="closeDialog()">Cancel</button>
+      </div>
+    </div>
+  </div>
 </main>
