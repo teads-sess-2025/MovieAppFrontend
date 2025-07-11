@@ -1,46 +1,63 @@
-<main class="about-movie-container">
-  <section class="poster-section">
-    <img
-      src="https://image.tmdb.org/t/p/w400{{movie()?.poster_path}}"
-      alt="{{movie()?.title}} poster"
-      class="movie-poster"
-    />
-    <!-- <img
-      src="https://image.tmdb.org/t/p/w400{{movie()?.backdrop_path}}"
-      alt="{{movie()?.title}} poster"
-      class="movie-poster"
-    /> -->
-<button (click)="saveMovieToPlaylist()">
-  ADD MOVIE TO THE LIBRARY
-</button>
+<main class="movie-container">
+  <header
+    class="movie-banner"
+    [style.backgroundImage]="
+      'url(https://image.tmdb.org/t/p/w1280' + movie()?.backdrop_path + ')'
+    "
+  >
+    <div class="banner-overlay"></div>
+  </header>
 
-  </section>
-
-  <section class="details-section">
-    <h1 class="movie-title">{{ movie()?.title }}</h1>
-    <p class="movie-overview">{{ movie()?.overview }}</p>
-
-    <div class="movie-info">
-      <div><strong>Adult:</strong> {{ movie()?.adult }}</div>
-      <div><strong>Budget:</strong> {{ movie()?.budget }}</div>
-      <div><strong>Release Date:</strong> {{ movie()?.release_date }}</div>
-      <div><strong>Rating:</strong> {{ movie()?.vote_average }} / 10</div>
-      <div><strong>Production Companies:</strong><ul>
-        @for(p of movie()?.production_companies; track p.id){
-            <li><img class="logo"
-      src="https://image.tmdb.org/t/p/w200{{p.logo_path}}"
-      alt="{{p.name}} logo"
-    />{{p.name}}</li>
-        }
-      </ul></div>
-      <div><strong>Genres:</strong><ul>
-        @for(genre of movie()?.genres; track genre.id){
-            <li>{{genre.name}}</li>
-        }
-      </ul></div>
+  <section class="movie-card">
+    <div class="movie-header">
+      <h1 class="movie-title">{{ movie()?.title }}</h1>
+      <p class="movie-tagline">{{ movie()?.tagline }}</p>
     </div>
-      <div><strong>Revenue:</strong> {{ movie()?.revenue }}</div>
-      <div><strong>Tagline:</strong> {{ movie()?.tagline }}</div>
-      <div><strong>Status:</strong> {{ movie()?.status }}</div>
+
+    <div class="movie-body">
+      <p class="movie-overview">{{ movie()?.overview }}</p>
+
+      <div class="meta-grid">
+        <div><strong>Rating:</strong> {{ movie()?.vote_average }} / 10</div>
+        <div><strong>Release Year:</strong> {{ movie()?.release_date }}</div>
+        <div><strong>Status:</strong> {{ movie()?.status }}</div>
+        <div>
+          <strong>Budget:</strong> ${{ movie()?.budget?.toLocaleString() }}
+        </div>
+        <div>
+          <strong>Revenue:</strong> ${{ movie()?.revenue?.toLocaleString() }}
+        </div>
+        <div><strong>Adult:</strong> {{ movie()?.adult }}</div>
+      </div>
+
+      <div class="genres">
+        <strong>Genres:</strong>
+        <ul>
+          @for(genre of movie()?.genres; track genre.id) {
+          <li>{{ genre.name }}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="production">
+        <strong>Production Companies:</strong>
+        <ul class="production-companies">
+          @for(p of movie()?.production_companies; track p.id) {
+          <li>
+            <img
+              class="company-logo"
+              [src]="'https://image.tmdb.org/t/p/w200' + p.logo_path"
+              [alt]="p.name"
+            />
+            {{ p.name }}
+          </li>
+          }
+        </ul>
+      </div>
+
+      <button class="add-button" (click)="saveMovieToPlaylist()">
+        Add to Library
+      </button>
+    </div>
   </section>
 </main>
