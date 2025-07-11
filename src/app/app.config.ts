@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 
 
-export const NOTES_BASE_URL = 'http://localhost:8080/api';
+export const BACKEND_BASE_URL = 'https://movieapp.greenisland-0015b907.westeurope.azurecontainerapps.io';
 
 export const appConfig: ApplicationConfig = {
   providers: [

@@ -9,6 +9,16 @@ main {
   min-height: 100vh;
 }
 
+input {
+  background-color: transparent;
+  outline: none;
+  width: 400px;
+  border: solid 1px white;
+  border-radius: 15px;
+  padding: 15px;
+  color: white;
+}
+
 li {
   list-style: none;
 }

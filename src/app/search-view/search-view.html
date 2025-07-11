@@ -1,5 +1,14 @@
 <main>
-  <h1>Browse Movies</h1>
+  <div>
+    <input
+      type="text"
+      placeholder="Enter movie name ..."
+      [(ngModel)]="searchTerm"
+      name="search"
+      (keyup.enter)="searchMovies()"
+    />
+  </div>
+
   <div class="search-contaiener">
     <ul class="movie-grid">
       @for(movie of movies(); track movie.id) {

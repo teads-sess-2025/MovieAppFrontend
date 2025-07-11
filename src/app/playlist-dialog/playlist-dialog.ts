@@ -1,5 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject, signal } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Playlist } from '../types/playlist';
 
 @Component({
   selector: 'app-playlist-dialog',
@@ -11,12 +13,15 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class PlaylistDialogComponent {
   dialogRef = inject(MatDialogRef<PlaylistDialogComponent>);
 
-  playlists = [
-    { id: 1, name: 'Favorites' },
-    { id: 2, name: 'Watch Later' },
-    // TODO: fetch from API
-  ];
+  http = inject(HttpClient);
+  playlists = signal<Playlist[]>([]);
 
+  ngOnInit() {
+    this.http
+      .get<Playlist[]>('http://localhost:8080/api/playlists')
+      .subscribe((playlist) => this.playlists.set(playlist));
+  }
+  
   selectPlaylist(playlistId: number) {
     this.dialogRef.close(playlistId);
   }
