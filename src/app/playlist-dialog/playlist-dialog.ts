@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Playlist } from '../types/playlist';
+import { BACKEND_BASE_URL } from '../app.config';
 
 @Component({
   selector: 'app-playlist-dialog',
@@ -18,7 +19,7 @@ export class PlaylistDialogComponent {
 
   ngOnInit() {
     this.http
-      .get<Playlist[]>('http://localhost:8080/api/playlists')
+      .get<Playlist[]>(`${BACKEND_BASE_URL}/api/playlists`)
       .subscribe((playlist) => this.playlists.set(playlist));
   }
   

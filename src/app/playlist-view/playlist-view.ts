@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { Playlist } from '../types/playlist';
+import { BACKEND_BASE_URL } from '../app.config';
 
 @Component({
   selector: 'app-playlist-view',
@@ -14,7 +15,7 @@ export class PlaylistView {
   playlists = signal<Playlist[]>([]);
 
   ngOnInit() {
-  this.http.get<Playlist[]>("http://localhost:8080/api/playlists")
+  this.http.get<Playlist[]>(`${BACKEND_BASE_URL}/api/playlists`)
     .subscribe(playlist => 
       this.playlists.set(playlist)
     );

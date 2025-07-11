@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, input, signal } from '@angular/core';
 import { Movie } from '../types/movie';
 import { FormsModule } from '@angular/forms';
+import { BACKEND_BASE_URL } from '../app.config';
 
 @Component({
   selector: 'app-search-view',
@@ -20,7 +21,7 @@ export class SearchView {
     if (!name.trim()) return;
 
     this.http
-      .get<Movie[]>(`http://localhost:8080/api/movies/n/${name}`)
+      .get<Movie[]>(`${BACKEND_BASE_URL}/api/movies/n/${name}`)
       .subscribe({
         next: (results) => this.movies.set(results),
         error: (err) => {

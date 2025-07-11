@@ -3,6 +3,7 @@ import { Component, inject, Input, input, OnInit, signal } from '@angular/core';
 import { Movie } from '../types/movie';
 import { MatDialog } from '@angular/material/dialog';
 import { PlaylistDialogComponent } from '../playlist-dialog/playlist-dialog';
+import { BACKEND_BASE_URL } from '../app.config';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class MovieView implements OnInit {
       return;
     }
 
-    this.http.get<Movie>(`http://localhost:8080/api/movies/${this.id}`)
+    this.http.get<Movie>(`${BACKEND_BASE_URL}/api/movies/${this.id}`)
       .subscribe({
         next: (movie) => this.movie.set(movie),
         error: (err) => console.error('Failed to load movie', err)
@@ -39,7 +40,7 @@ saveMovieToPlaylist() {
 
   dialogRef.afterClosed().subscribe((playlistId: number | null) => {
     if (playlistId) {
-      this.http.post(`http://localhost:8080/api/movies/save/${this.id}?i=${playlistId}`, null)
+      this.http.post(`${BACKEND_BASE_URL}/api/movies/save/${this.id}?i=${playlistId}`, null)
         .subscribe({
           next: () => alert('Movie added to playlist!'),
           error: (err) => alert('Failed to add movie.')
