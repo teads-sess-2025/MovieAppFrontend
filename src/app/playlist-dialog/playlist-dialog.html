@@ -1,11 +1,17 @@
-<div class="container">
-  <h2>Select a Playlist</h2>
-  <ul>
-    @for(p of playlists(); track p.id){
-    <li>
-      <button (click)="selectPlaylist(p.id)">{{ p.name }}</button>
-    </li>
-    }
-  </ul>
-  <button (click)="cancel()">Cancel</button>
+<div class="select-playlist-container">
+  <div class="playlist-dialog">
+    <h2 class="dialog-title">Select a Playlist</h2>
+
+    <ul class="playlist-list">
+      @for (p of playlists(); track p.id) {
+      <li>
+        <button class="playlist-button" (click)="selectPlaylist(p.id)">
+          {{ p.name }}
+        </button>
+      </li>
+      }
+    </ul>
+
+    <button class="cancel-button" (click)="cancel()">Cancel</button>
+  </div>
 </div>
