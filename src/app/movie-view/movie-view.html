@@ -43,13 +43,18 @@
         <strong>Production Companies:</strong>
         <ul class="production-companies">
           @for(p of movie()?.production_companies; track p.id) {
-          <li>
+          <li class="company">
+            @if(p.logo_path != null){
             <img
               class="company-logo"
               [src]="'https://image.tmdb.org/t/p/w200' + p.logo_path"
               [alt]="p.name"
             />
-            {{ p.name }}
+            }@else{
+            <p class="company-text">
+              {{ p.name }}
+            </p>
+            }
           </li>
           }
         </ul>
