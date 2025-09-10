@@ -1,59 +1,231 @@
-# MovieAppFrontend
+# Movie App Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+A modern Angular application for browsing, searching, and managing movie collections with playlist functionality. This frontend application provides an intuitive interface for movie enthusiasts to discover films and organize them into custom playlists.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Movie Browsing**: Browse through a comprehensive collection of movies
+- **Advanced Search**: Search for movies by title with real-time results
+- **Movie Details**: View detailed information about individual movies including:
+  - Movie metadata (title, release date, genres, etc.)
+  - Production details (budget, revenue, production companies)
+  - Ratings and reviews (vote average, vote count)
+  - Movie overview and tagline
+- **Playlist Management**:
+  - Create custom playlists
+  - Add movies to playlists
+  - View playlist contents
+  - Organize your favorite movies
+- **Responsive Design**: Modern, mobile-friendly interface built with Angular Material
+- **Real-time Updates**: Dynamic content loading with Angular signals
+
+## Technology Stack
+
+- **Framework**: Angular 20.1.0
+- **UI Components**: Angular Material 20.1.0
+- **HTTP Client**: Angular HttpClient for API communication
+- **State Management**: Angular Signals for reactive state management
+- **Routing**: Angular Router with component input binding
+- **Styling**: CSS with Angular Material theming
+- **Build Tool**: Angular CLI with modern build system
+- **Testing**: Jasmine & Karma for unit testing
+
+## Prerequisites
+
+Before running this application, ensure you have the following installed:
+
+- **Node.js**: Version 20.19 or higher
+- **npm**: Comes with Node.js
+- **Angular CLI**: Install globally with `npm install -g @angular/cli`
+
+## Getting Started
+
+### 1. Clone the Repository
 
 ```bash
+git clone <repository-url>
+cd movie_app_frontend
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Backend URL
+
+The application is configured to connect to a backend API. You can modify the backend URL in `src/app/app.config.ts`:
+
+```typescript
+// For local development
+export const BACKEND_BASE_URL = "http://localhost:8080";
+
+// For production (uncomment and modify as needed)
+// export const BACKEND_BASE_URL = 'https://your-backend-url.com';
+```
+
+### 4. Start the Development Server
+
+```bash
+npm start
+# or
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The application will be available at `http://localhost:4200/`. The app will automatically reload when you make changes to the source files.
 
-## Code scaffolding
+## Project Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+src/
+├── app/
+│   ├── browse-view/          # Movie browsing interface
+│   ├── home-view/            # Landing page
+│   ├── movie-view/           # Individual movie details
+│   ├── playlist-view/        # Playlist management
+│   ├── playlist-movie-view/  # Movies within a playlist
+│   ├── playlist-dialog/      # Playlist selection dialog
+│   ├── search-view/          # Movie search functionality
+│   ├── header/               # Navigation header
+│   ├── footer/               # Application footer
+│   ├── types/                # TypeScript type definitions
+│   │   ├── movie.ts          # Movie data model
+│   │   └── playlist.ts       # Playlist data model
+│   ├── app.config.ts         # Application configuration
+│   ├── app.routes.ts         # Routing configuration
+│   └── app.ts                # Main application component
+├── styles.css                # Global styles
+└── index.html                # Main HTML template
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Available Routes
+
+- `/` - Home page
+- `/browse` - Browse all movies
+- `/search` - Search for movies
+- `/movie/:id` - View movie details
+- `/playlists` - Manage playlists
+- `/playlists/:id` - View playlist contents
+
+## Development Commands
+
+### Start Development Server
 
 ```bash
-ng generate --help
+npm start
+# or
+ng serve
 ```
 
-## Building
-
-To build the project run:
+### Build for Production
 
 ```bash
+npm run build
+# or
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Build with Watch Mode
 
-## Running unit tests
+```bash
+npm run watch
+# or
+ng build --watch --configuration development
+```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Run Unit Tests
+
+```bash
+npm test
+# or
+ng test
+```
+
+### Code Generation
+
+```bash
+# Generate a new component
+ng generate component component-name
+
+# Generate a new service
+ng generate service service-name
+
+# See all available schematics
+ng generate --help
+```
+
+## API Integration
+
+The application integrates with a backend API for the following operations:
+
+### Movies
+
+- `GET /api/movies` - Fetch all movies
+- `GET /api/movies/n/{name}` - Search movies by name
+
+### Playlists
+
+- `GET /api/playlists` - Fetch user playlists
+- `POST /api/playlists` - Create new playlist
+- `GET /api/playlists/{id}` - Fetch playlist contents
+
+## UI Components
+
+The application uses Angular Material components for a consistent and modern user experience:
+
+- Material Design components
+- Responsive layout
+- Dark/Light theme support
+- Accessible interface
+
+## Testing
+
+The project includes comprehensive testing setup:
+
+- **Unit Tests**: Jasmine framework with Karma test runner
+- **Component Testing**: Angular testing utilities
+- **Coverage Reports**: Built-in code coverage reporting
+
+Run tests with:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## Build and Deployment
 
-For end-to-end (e2e) testing, run:
+### Production Build
 
 ```bash
-ng e2e
+ng build --configuration production
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The build artifacts will be stored in the `dist/` directory, optimized for production with:
 
-## Additional Resources
+- Minified code
+- Tree shaking
+- AOT compilation
+- Bundle optimization
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Deployment
+
+The `dist/` folder contains all files needed to deploy the application to any static hosting service.
+
+## License
+
+This project is part of the Teads Summer School program.
+
+## Support
+
+For support and questions:
+
+- Check the [Angular Documentation](https://angular.dev)
+- Review the [Angular CLI Documentation](https://angular.dev/tools/cli)
+- Open an issue in the repository
+
+## Version History
+
+- **v0.0.0** - Initial release with core movie browsing and playlist functionality
+
+---
