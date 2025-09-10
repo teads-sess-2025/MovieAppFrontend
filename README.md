@@ -1,6 +1,8 @@
 # Movie App Frontend
 
-A modern Angular application for browsing, searching, and managing movie collections with playlist functionality. This frontend application provides an intuitive interface for movie enthusiasts to discover films and organize them into custom playlists.
+A modern Angular application for browsing, searching, and managing movie collections with playlist functionality. This frontend interfaces with the [MovieApp backend](https://github.com/teads-sess-2025/MovieApp), which is built using Java and Spring Boot. It provides an intuitive experience for movie enthusiasts to discover films and organize them into custom playlists.
+
+This project was developed as part of the Teads Summer School program.
 
 ## Features
 
@@ -223,9 +225,3 @@ For support and questions:
 - Check the [Angular Documentation](https://angular.dev)
 - Review the [Angular CLI Documentation](https://angular.dev/tools/cli)
 - Open an issue in the repository
-
-## Version History
-
-- **v0.0.0** - Initial release with core movie browsing and playlist functionality
-
----
